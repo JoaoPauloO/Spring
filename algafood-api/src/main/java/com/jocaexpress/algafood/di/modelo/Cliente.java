@@ -7,11 +7,10 @@ public class Cliente {
 	private String telefone;
 	private boolean ativo = false;
 	
-	public Cliente(String nome, String email, String telefone, boolean ativo) {
+	public Cliente(String nome, String email, String telefone) {
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
-		this.ativo = ativo;
 	}
 
 	public String getNome() {

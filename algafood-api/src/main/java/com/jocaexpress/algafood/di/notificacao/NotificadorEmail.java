@@ -8,7 +8,7 @@ import com.jocaexpress.algafood.di.modelo.Cliente;
 public class NotificadorEmail {
 	
 	public NotificadorEmail() { // Pelo o fato da classe ser gerenciada por BEAN, o construtor é instanciado! "Injeção de dependência" e fica pronta para uso.
-		System.out.println("Construtor chamado!");
+		System.out.println("Construtor email chamado!");
 	}
 	
 	public void notificar(Cliente cliente, String mensagem) {
