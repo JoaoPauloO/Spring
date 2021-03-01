@@ -9,7 +9,7 @@ import com.jocaexpress.algafood.di.notificacao.Notificador;
 @Component
 public class AtivacaoClienteService {
 	
-	@Autowired
+	@Autowired(required = false) // Informo ao gerenciado do Spring que essa dependência não é obrigatória
 	private Notificador notificador;
 	
 //	@Autowired 
@@ -24,7 +24,11 @@ public class AtivacaoClienteService {
 	public void ativar(Cliente cliente) {
 		cliente.ativar();
 		
-		notificador.notificar(cliente, "Seu cadastro no sistema está ativo!");
+		if(notificador != null) {
+			notificador.notificar(cliente, "Seu cadastro no sistema está ativo!");
+		} else {
+			System.out.println("Não existe notificador, mas o cliente foi ativado!");
+		}
 	}
 
 	public Notificador getNotificador() {
