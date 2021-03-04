@@ -1,11 +1,12 @@
 package com.jocaexpress.algafood.di.notificacao;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import com.jocaexpress.algafood.di.modelo.Cliente;
 
-//@Primary
+@Qualifier("normal")
 @Component
 public class NotificadorSMS implements Notificador {
 	
