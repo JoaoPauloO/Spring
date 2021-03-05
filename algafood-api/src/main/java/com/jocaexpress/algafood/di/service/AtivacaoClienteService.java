@@ -1,6 +1,9 @@
 package com.jocaexpress.algafood.di.service;
 
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -11,14 +14,23 @@ import com.jocaexpress.algafood.di.notificacao.Notificador;
 import com.jocaexpress.algafood.di.notificacao.TipoDoNotificador;
 
 
-@Component
+//@Component
 public class AtivacaoClienteService {
 	
-	// Esta anotação recebe um parâmetro da "classe" do tipo enum. E dentro dela o Qualifier especifica o tipo de notificação
-	@TipoDoNotificador(NivelUrgencia.URGENTE)  
+	@TipoDoNotificador(NivelUrgencia.NORMAL)  
 	
 	@Autowired
-	private Notificador notificador; // Uma lista de beans. No caso atual temos dois beans de notificação.
+	private Notificador notificador;
+	
+//	@PostConstruct
+	public void init () {
+		System.out.println("INIT" + notificador);
+	}
+	
+//	@PreDestroy
+	public void destroy () {
+		System.out.println("DESTROY");
+	}
 	
 	public void ativar(Cliente cliente) {
 		cliente.ativar();

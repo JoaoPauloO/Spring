@@ -5,10 +5,10 @@ import java.lang.annotation.RetentionPolicy;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 
-@Retention(RetentionPolicy.RUNTIME) // Quanto tempo deve permanecer quando for usada. No caso de RUNTIME será no tempo de execução.
-@Qualifier // O Qualifier classifica a "classe" ou anotação de acordo com o valor que é passado do enum através do NivelUrgencia value.
+@Retention(RetentionPolicy.RUNTIME) 
+@Qualifier
 public @interface TipoDoNotificador {
 	
-	NivelUrgencia value();
+	NivelUrgencia value(); // A anotação recebe o valor da classe enum e o qualifier passa a ser o valor passado.
 	
 }
