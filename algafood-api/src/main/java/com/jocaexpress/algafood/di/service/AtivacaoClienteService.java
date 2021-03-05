@@ -1,11 +1,7 @@
 package com.jocaexpress.algafood.di.service;
 
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
 import com.jocaexpress.algafood.di.modelo.Cliente;
@@ -14,28 +10,16 @@ import com.jocaexpress.algafood.di.notificacao.Notificador;
 import com.jocaexpress.algafood.di.notificacao.TipoDoNotificador;
 
 
-//@Component
+@Component
 public class AtivacaoClienteService {
-	
-	@TipoDoNotificador(NivelUrgencia.NORMAL)  
-	
+
 	@Autowired
-	private Notificador notificador;
-	
-//	@PostConstruct
-	public void init () {
-		System.out.println("INIT" + notificador);
-	}
-	
-//	@PreDestroy
-	public void destroy () {
-		System.out.println("DESTROY");
-	}
+	private ApplicationEventPublisher eventPublisher; // Esta interface é capaz de publicar event e algum ouvinte captura.
 	
 	public void ativar(Cliente cliente) {
 		cliente.ativar();
 		
-		notificador.notificar(cliente, "Seu cadastro no sistema está ativo!");
+		eventPublisher.publishEvent(new ClienteAtivadoEvent(cliente)); // Método que dispara evento
 	}
 	
 }
