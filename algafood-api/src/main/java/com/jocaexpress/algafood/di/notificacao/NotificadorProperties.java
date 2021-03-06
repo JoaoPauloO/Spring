@@ -9,7 +9,7 @@ public class NotificadorProperties {
 	
 	private String hostServidor;
 	private Integer portaServidor;
-	
+			
 	public String getHostServidor() {
 		return hostServidor;
 	}
