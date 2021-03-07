@@ -1,18 +1,17 @@
 package com.jocaexpress.algafood.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity // Informa ao spring que esta classe é uma entidade da ORM. No banco vira uma tabela.
-@Table(name = "tab_cozinhas") // Renomeando o nome da tabela
 public class Cozinha {
 
 	@Id // Informa ao banco que este atributo ou colena é uma primary key
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "nom_cozinha", length = 30) // Renomeando o nome da tabela e passando o tamanho máximo do atributo ao banco de dados.
 	private String nome;
 
 	public Long getId() {
