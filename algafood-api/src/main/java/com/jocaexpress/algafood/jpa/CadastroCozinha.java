@@ -23,7 +23,7 @@ public class CadastroCozinha {
 		return query.getResultList(); // A query de consulta busca tudo da tabela cozinha, e então adciona numa lista e retorna uma lista.
 	}
 	
-	public Cozinha buscar (Long id) {
+	public Cozinha buscar(Long id) {
 		// select * from Cozinha where id =  "id" 
 		return manager.find(Cozinha.class, id); // Este método busca pelo o Id. No cazo, ele busca por uma "instancia" de cozinha. 
 	}
@@ -31,6 +31,12 @@ public class CadastroCozinha {
 	@Transactional // Este método é executado dentro de uma transação!
 	public Cozinha salvar(Cozinha cozinha) {
 		return manager.merge(cozinha); // Fundi/Coloca entidade a entidade dentro de um contexto de persitência.
+	}
+	
+	@Transactional 
+	public void remove(Cozinha cozinha) {
+		cozinha = buscar(cozinha.getId());
+		manager.remove(cozinha);
 	}
 	
 }
