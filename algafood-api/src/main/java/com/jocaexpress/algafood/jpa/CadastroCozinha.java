@@ -29,7 +29,7 @@ public class CadastroCozinha {
 	}
 	
 	@Transactional // Este método é executado dentro de uma transação!
-	public Cozinha adcionar(Cozinha cozinha) {
+	public Cozinha salvar(Cozinha cozinha) {
 		return manager.merge(cozinha); // Fundi/Coloca entidade a entidade dentro de um contexto de persitência.
 	}
 	
